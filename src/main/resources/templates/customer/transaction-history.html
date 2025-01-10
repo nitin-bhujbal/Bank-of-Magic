@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user-base1 :: layout(content=~{::section}, pageTitle='Transaction-history')}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transaction History</title>
+</head>
+<body>
+
+	<section class="main container">
+		<div class="card container mt-5 p-4 rounded shadow">
+			<div class="card-header">
+				<h2 class="text-center mb-2" style="color: #007bff;">Transaction
+					History</h2>
+			</div>
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead class="table-primary">
+						<tr>
+							<th scope="col">Transaction ID</th>
+							<th scope="col">Transaction Type</th>
+							<th scope="col">Amount</th>
+							<th scope="col">Date</th>
+							<th scope="col">Remaining Balance</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="transaction : ${transactions}">
+							<td th:text="${transaction.id}"></td>
+							<td th:text="${transaction.type}"></td>
+
+							<!-- Amount styling based on transaction type -->
+							<td><span
+								th:class="${transaction.type == 'Deposit' ? 'text-success' : (transaction.type == 'Withdraw' || transaction.type == 'Fund Transfer') ? 'text-danger' : ''}">
+									<span
+									th:text="${transaction.type == 'Withdraw' || transaction.type == 'Fund Transfer' ? '-' : ''}"></span>
+									<span th:text="${transaction.amount}"></span>
+							</span></td>
+
+							<!-- Date -->
+							<td th:text="${transaction.date}"></td>
+
+							<!-- Remaining Balance with primary color -->
+							<td><span class="text-primary"
+								th:text="${transaction.remainingBalance}"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+	</section>
+
+</body>
+</html>

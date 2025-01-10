@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user-base1 :: layout(content=~{::section}, pageTitle='Customer Account')}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Account</title>
+</head>
+<body>
+
+	<section class="main container">
+
+		<div th:if="${success}">
+			<div class="alert alert-success text-center" role="alert">
+				<span th:text="${success}"></span>
+			</div>
+		</div>
+
+		<div class="card mb-5">
+			<div class="card-header">
+				<h2>My Account</h2>
+			</div>
+
+			<!-- Tabs for View and Edit -->
+			<div class="card-body">
+				<ul class="nav nav-tabs" id="accountTab" role="tablist">
+					<li class="nav-item" role="presentation"><a
+						class="nav-link active" id="view-tab" data-bs-toggle="tab"
+						href="#viewTab" role="tab" aria-controls="viewTab"
+						aria-selected="true">View Personal & Account Information</a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						id="edit-tab" data-bs-toggle="tab" href="#editTab" role="tab"
+						aria-controls="editTab" aria-selected="false">Edit Personal
+							Information</a></li>
+				</ul>
+				<div class="tab-content" id="accountTabContent">
+
+					<!-- View Tab (Read-only) -->
+					<div class="tab-pane fade show active" id="viewTab" role="tabpanel"
+						aria-labelledby="view-tab">
+						<h4 class="mt-3">Personal Information</h4>
+						<div class="row">
+							<div class="col-md-4">
+								<label class="form-label">First Name</label> <input type="text"
+									class="form-control" th:value="${customer.firstName}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Middle Name</label> <input type="text"
+									class="form-control" th:value="${customer.middleName}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Last Name</label> <input type="text"
+									class="form-control" th:value="${customer.lastName}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Mobile Number</label> <input
+									type="text" class="form-control"
+									th:value="${customer.mobileNumber}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Email</label> <input type="email"
+									class="form-control" th:value="${customer.email}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Address</label> <input type="text"
+									class="form-control" th:value="${customer.address}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">State</label> <input type="text"
+									class="form-control" th:value="${customer.state}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Pincode</label> <input type="text"
+									class="form-control" th:value="${customer.pincode}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Username</label> <input type="text"
+									class="form-control" th:value="${customer.username}" readonly>
+							</div>
+						</div>
+
+						<!-- Account Information (Read-only) -->
+						<h4 class="mt-4">Account Information</h4>
+						<div class="row">
+							<div class="col-md-4">
+								<label class="form-label">Account Number</label> <input
+									type="text" class="form-control"
+									th:value="${customer.account.accountNumber}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Account Type</label> <input
+									type="text" class="form-control"
+									th:value="${customer.account.accountType}" readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Balance</label> <input type="text"
+									class="form-control" th:value="${customer.account.balance}"
+									readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">Branch Name</label> <input type="text"
+									class="form-control" th:value="${customer.account.branchName}"
+									readonly>
+							</div>
+
+							<div class="col-md-4">
+								<label class="form-label">IFSC Code</label> <input type="text"
+									class="form-control" th:value="${customer.account.ifscCode}"
+									readonly>
+							</div>
+						</div>
+					</div>
+
+					<!-- Edit Tab (Editable form) -->
+					<div class="tab-pane fade" id="editTab" role="tabpanel"
+						aria-labelledby="edit-tab">
+						<h4 class="mt-3">Edit Personal Information</h4>
+						<form th:action="@{/customer/update-details}" method="post">
+							<input type="hidden" th:value="${customer.id}" th:name="id" />
+							<div class="row">
+								<div class="col-md-4">
+									<label for="firstName" class="form-label">First Name</label> <input
+										type="text" class="form-control" id="firstName"
+										name="firstName" th:value="${customer.firstName}" required>
+								</div>
+
+								<div class="col-md-4">
+									<label for="middleName" class="form-label">Middle Name</label>
+									<input type="text" class="form-control" id="middleName"
+										name="middleName" th:value="${customer.middleName}">
+								</div>
+
+								<div class="col-md-4">
+									<label for="lastName" class="form-label">Last Name</label> <input
+										type="text" class="form-control" id="lastName" name="lastName"
+										th:value="${customer.lastName}" required>
+								</div>
+
+								<div class="col-md-4">
+									<label for="mobileNumber" class="form-label">Mobile
+										Number</label> <input type="text" class="form-control"
+										id="mobileNumber" name="mobileNumber"
+										th:value="${customer.mobileNumber}" required>
+								</div>
+
+								<div class="col-md-4">
+									<label for="email" class="form-label">Email</label> <input
+										type="email" class="form-control" id="email" name="email"
+										th:value="${customer.email}" required>
+								</div>
+
+								<div class="col-md-4">
+									<label for="address" class="form-label">Address</label> <input
+										type="text" class="form-control" id="address" name="address"
+										th:value="${customer.address}" required>
+								</div>
+
+								<div class="col-md-4">
+									<label for="state" class="form-label">State</label> <input
+										type="text" class="form-control" id="state" name="state"
+										th:value="${customer.state}" required>
+								</div>
+
+								<div class="col-md-4">
+									<label for="pincode" class="form-label">Pincode</label> <input
+										type="text" class="form-control" id="pincode" name="pincode"
+										th:value="${customer.pincode}" required>
+								</div>
+
+								<div class="col-md-4">
+									<label for="username" class="form-label">Username</label> <input
+										type="text" class="form-control" id="username" name="username"
+										th:value="${customer.username}" required readonly>
+								</div>
+
+								<div class="col-md-4">
+									<label for="password" class="form-label">New Password</label> <input
+										type="password" class="form-control" id="password"
+										name="password" placeholder="New Password">
+								</div>
+
+								<div class="col-md-4">
+									<label for="confirmPassword" class="form-label">Confirm
+										New Password</label> <input type="password" class="form-control"
+										id="confirmPassword" name="confirmPassword"
+										placeholder="Confirm New Password">
+								</div>
+							</div>
+
+							<button type="submit" class="btn btn-primary mt-3">Update
+								Personal Details</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Action buttons -->
+			<div class="card-footer text-center">
+				<a href="/customer/home" th:href="@{/customer/home}"
+					class="btn btn-secondary">Back to Home</a>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user-base1 :: layout(content=~{::section}, pageTitle='Fund-transfer')}">
+<head>
+<meta charset="UTF-8">
+<title>Fund-transfer</title>
+</head>
+<body>
+
+	<section class="main container">
+
+		<div th:if="${success}">
+			<div class="alert alert-success text-center" role="alert">
+				<span th:text="${success}"></span>
+			</div>
+		</div>
+
+		<div class="card container mt-5 p-4 rounded shadow"
+			style="max-width: 500px; background-color: #f8d7da;">
+			<div class="card-header">
+				<h2 class="text-center mb-2" style="color: #dc3545;">Fund
+					Transfer</h2>
+			</div>
+
+			<div class="mb-3">
+				<label for="balance" class="form-label fw-bold">Current
+					Balance</label>
+				<div class="input-group">
+					<input type="password" class="form-control" id="balance"
+						th:value="${currentBalence}" readonly>
+					<button class="btn btn-outline-secondary" type="button"
+						onclick="toggleBalanceVisibility()">
+						<i id="toggleIcon" class="bi bi-eye-slash"></i>
+					</button>
+				</div>
+			</div>
+
+			<form action="#" th:action="@{/customer/fund-transfer}" method="POST">
+				<div class="mb-3">
+					<label for="receiver" class="form-label fw-bold">Receiver
+						Username</label> <input type="text" class="form-control" id="receiver"
+						name="receiver" placeholder="Enter receiver's username" required>
+				</div>
+				<div class="mb-3">
+					<label for="amount" class="form-label fw-bold">Amount</label> <input
+						type="number" class="form-control" id="amount" name="amount"
+						placeholder="Enter amount" required>
+				</div>
+
+				<input type="hidden" th:name="customerId" th:value="${customer.id}">
+
+				<button type="submit" class="btn btn-danger w-100">Transfer</button>
+			</form>
+		</div>
+	</section>
+
+
+</body>
+</html>

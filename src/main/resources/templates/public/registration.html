@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base :: layout(content=~{::section}, pageTitle='Registration')}">
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+	<section>
+
+		<!-- sub title -->
+		<nav class="navbar bg-body-tertiary">
+			<div class="container-fluid login-head">
+				<p style="color: #14578A">New User? Register Here</p>
+			</div>
+		</nav>
+		<!-- end sub title -->
+
+		<!-- registration form -->
+		<div class="container p-3 main-content">
+			<div class="row justify-content-center">
+				<div class="col-md-10">
+					<div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+						<div class="card-header">
+							<p class="fs-4 text-center">Registration</p>
+						</div>
+						<div class="card-body">
+
+							<form action="/save-customer" th:action="@{/save-customer}"
+								th:object="${customer}" method="post">
+								<!-- Row 1 -->
+								<div class="form-row row mt-2">
+									<div class="col-md-4">
+										<label for="firstName" class="form-label">First Name<span
+											class="text-danger">*</span></label> <input type="text"
+											class="form-control" name="firstName" id="firstName"
+											placeholder="Enter first name" th:field="*{firstName}"
+											th:classappend="${#fields.hasErrors('firstName')} ? 'is-invalid' : ''" />
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('firstName')}"
+											th:text="${#fields.errors('firstName')}"></div>
+									</div>
+									<div class="col-md-4">
+										<label for="middleName" class="form-label">Middle Name</label>
+										<input type="text" class="form-control" name="middleName"
+											id="middleName" placeholder="Enter middle name" />
+									</div>
+									<div class="col-md-4">
+										<label for="lastName" class="form-label">Last Name<span
+											class="text-danger">*</span></label> <input type="text"
+											class="form-control" name="lastName" id="lastName"
+											placeholder="Enter last name" th:field="*{lastName}"
+											th:classappend="${#fields.hasErrors('lastName')} ? 'is-invalid' : ''" />
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('lastName')}"
+											th:text="${#fields.errors('lastName')}"></div>
+									</div>
+								</div>
+
+								<!-- Row 2 -->
+								<div class="form-row row mt-2">
+									<div class="col-md-4">
+										<label for="mobileNumber" class="form-label">Mobile
+											Number<span class="text-danger">*</span>
+										</label> <input type="text" class="form-control" name="mobileNumber"
+											id="mobileNumber" placeholder="Enter mobile number"
+											th:field="*{mobileNumber}"
+											th:classappend="${#fields.hasErrors('mobileNumber')} ? 'is-invalid' : ''" />
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('mobileNumber')}"
+											th:text="${#fields.errors('mobileNumber')}"></div>
+									</div>
+									<div class="col-md-4">
+										<label for="email" class="form-label">Email<span
+											class="text-danger">*</span></label> <input type="email"
+											class="form-control" name="email" id="email"
+											placeholder="Enter email" th:field="*{email}"
+											th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''" />
+										<div class="text-danger" th:if="${#fields.hasErrors('email')}"
+											th:text="${#fields.errors('email')}"></div>
+									</div>
+									<div class="col-md-4">
+										<label for="aadhaarNumber" class="form-label">Aadhaar
+											Number<span class="text-danger">*</span>
+										</label> <input type="text" class="form-control" name="aadhaarNumber"
+											id="aadhaarNumber" placeholder="Enter Aadhaar number"
+											th:field="*{aadhaarNumber}"
+											th:classappend="${#fields.hasErrors('aadhaarNumber')} ? 'is-invalid' : ''" />
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('aadhaarNumber')}"
+											th:text="${#fields.errors('aadhaarNumber')}"></div>
+									</div>
+								</div>
+
+								<!-- Row 3 -->
+								<div class="form-row row mt-2">
+									<div class="col-md-4">
+										<label for="address" class="form-label">Address<span
+											class="text-danger">*</span></label> <input type="text"
+											class="form-control" name="address" id="address"
+											placeholder="Enter address" th:field="*{address}"
+											th:classappend="${#fields.hasErrors('address')} ? 'is-invalid' : ''" />
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('address')}"
+											th:text="${#fields.errors('address')}"></div>
+									</div>
+									<div class="col-md-4">
+										<label for="state" class="form-label">State<span
+											class="text-danger">*</span></label> <input type="text"
+											class="form-control" name="state" id="state"
+											placeholder="Enter state" th:field="*{state}"
+											th:classappend="${#fields.hasErrors('state')} ? 'is-invalid' : ''" />
+										<div class="text-danger" th:if="${#fields.hasErrors('state')}"
+											th:text="${#fields.errors('state')}"></div>
+									</div>
+									<div class="col-md-4">
+										<label for="pincode" class="form-label">Pincode<span
+											class="text-danger">*</span></label> <input type="text"
+											class="form-control" name="pincode" id="pincode"
+											placeholder="Enter pincode" th:field="*{pincode}"
+											th:classappend="${#fields.hasErrors('pincode')} ? 'is-invalid' : ''" />
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('pincode')}"
+											th:text="${#fields.errors('pincode')}"></div>
+									</div>
+								</div>
+
+								<!-- Row 4 -->
+								<div class="form-row row mt-2">
+									<div class="col-md-4">
+										<label for="username" class="form-label">Username<span
+											class="text-danger">*</span></label> <input type="text"
+											class="form-control" name="username" id="username"
+											placeholder="Create a username" th:field="*{username}"
+											th:classappend="${#fields.hasErrors('username')} ? 'is-invalid' : ''" />
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('username')}"
+											th:text="${#fields.errors('username')}"></div>
+									</div>
+									<div class="col-md-4">
+										<label for="password" class="form-label">Password<span
+											class="text-danger">*</span></label> <input type="password"
+											class="form-control" name="password" id="password"
+											placeholder="Create your password" th:field="*{password}"
+											th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''" />
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('password')}"
+											th:text="${#fields.errors('password')}"></div>
+									</div>
+									<div class="col-md-4">
+										<label for="confirmPassword" class="form-label">Confirm
+											Password<span class="text-danger">*</span>
+										</label> <input type="password" class="form-control"
+											name="confirmPassword" id="confirmPassword"
+											placeholder="Confirm your password"
+											th:field="*{confirmPassword}"
+											th:classappend="${#fields.hasErrors('confirmPassword')} ? 'is-invalid' : ''" />
+										<div class="text-danger"
+											th:if="${#fields.hasErrors('confirmPassword')}"
+											th:text="${#fields.errors('confirmPassword')}"></div>
+									</div>
+								</div>
+
+								<!-- Submit Button -->
+								<div class="text-center mt-3">
+									<button type="submit" class="btn btn-info text-white col-4">Register</button>
+								</div>
+							</form>
+
+
+						</div>
+						<div class="card-footer text-center">
+							Have an account? <a href="/login" class="text-decoration-none">Login</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end registration form  -->
+
+	</section>
+</body>
+</html>

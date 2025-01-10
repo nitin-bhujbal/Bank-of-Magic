@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user-base :: layout(content=~{::section}, pageTitle='Create Account')}">
+<head>
+<meta charset="UTF-8">
+<!-- favi-icon -->
+<link rel="icon" type="image/png" href="/img/fevi-logo-color.png">
+<title>Bank of Magic :: Create Account</title>
+</head>
+<body>
+
+	<section>
+
+		<!-- Logout Button -->
+		<div class="text-center" style="margin-left: 92%">
+			<a href="/logout" th:href="@{/logout}" class="btn btn-danger">Logout</a>
+		</div>
+		<!-- End logout button -->
+
+		<!-- Welcome Card with User Info -->
+		<div style="text-align: center;">
+			Welcome, <span
+				th:text="${customer.firstName + ' ' + customer.lastName}"></span>
+			<p class="card-title">
+				Logged in on: <span th:text="${loginTime}"></span>
+			</p>
+		</div>
+		<div class="card-body">
+			<p class="card-text">Before you start, please create your account
+				to get full access to all features.</p>
+		</div>
+		<!-- End Welcome Card -->
+
+		<!-- Create Account Form -->
+		<div class="card welcome-card text-center">
+			<div class="card-header-create-account">Create Account</div>
+			<div class="card-body">
+				<form th:action="@{/customer/open-acount}"
+					action="/customer/open-acount" th:object="${account}" method="POST"
+					id="openAccountForm">
+					<!-- Branch Name -->
+					<div class="row">
+						<div class="col-6">
+							<div class="mb-3">
+								<label for="branchName" class="form-label">Select Branch
+									Name</label> <select class="form-select" id="branchName"
+									name="branchName" required>
+									<option value="" disabled selected>Select Branch</option>
+									<option value="Mumbai">Mumbai</option>
+									<option value="Nashik">Nashik</option>
+									<option value="Pune">Pune</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-6">
+							<!-- Account Type -->
+							<div class="mb-3">
+								<label for="accountType" class="form-label">Select
+									Account Type</label> <select class="form-select" id="accountType"
+									name="accountType" required>
+									<option value="" disabled selected>Select Account Type</option>
+									<option value="Savings">Savings</option>
+									<option value="Current">Current</option>
+									<option value="Fixed Deposit">Fixed Deposit</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<!-- Submit Button -->
+					<div class="mb-0">
+						<button type="submit" class="btn btn-primary">Create
+							Account</button>
+					</div>
+				</form>
+			</div>
+			<div class="card-footer text-muted">Thank you for choosing our
+				banking service.</div>
+		</div>
+		<!-- End Create Account Form -->
+
+	</section>
+
+</body>
+</html>

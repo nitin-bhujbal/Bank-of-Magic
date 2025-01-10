@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="layout(content)">
+<head>
+<meta charset="UTF-8">
+<!-- favi-icon -->
+<!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+<!-- OR for a PNG version -->
+<link rel="icon" type="image/png" href="/img/fevi-logo-color.png">
+<title th:text="'Bank of Magic :: ' + ${pageTitle}">Bank of
+	Magic</title>
+<!-- bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+	<!-- header -->
+	<div class="card mb-3 card-home-logo">
+		<!-- <img src="/img/logo-color.png" class="home-logo" alt="..."> -->
+		<a href="/" th:href="@{/}" class="home-logo-link"> <img
+			src="/img/logo-color.png" class="home-logo" alt="Logo">
+		</a>
+		<div class="card-body home-title">
+			<h5 class="card-title">Online Banking Service</h5>
+		</div>
+	</div>
+	<!-- end header -->
+
+	<!-- navbar -->
+	<nav style="background-color: #e3f2fd;">
+		<ul class="nav justify-content-center">
+			<li class="nav-item"><a class="nav-link active"
+				aria-current="page" href="#" th:href="@{/}">Home</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Product &
+					Service</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">How do I
+					(Help)</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+			<!-- <li class="nav-item">
+    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+  </li> -->
+		</ul>
+	</nav>
+	<!-- end navbar -->
+
+	<!-- start content -->
+	<div th:replace="${content}"></div>
+	<!-- end content -->
+
+	<!-- footer -->
+	<footer class="bg-body-tertiary text-center text-lg-start fixed-bottom">
+		<!-- Copyright -->
+		<div class="text-center p-1 ftr">
+			© 2024 Copyright : <a class="text-body" href="/" th:href="@{/}">bom.com</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+	<!-- end footer -->
+
+	<!-- bootstrap Js -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+	<script src="/js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+.card-home-logo {
+	border: none;
+}
+
+.home-logo {
+	width: 18%;
+	margin-bottom: -30px;
+}
+
+.home-title {
+	margin-bottom: -38px;
+}
+
+.home-banner {
+	margin-left: 0px;
+	align-items: center;
+	width: 1263px;
+	align-items: center;
+}
+
+.home-login-btn {
+	margin-top: -280px;
+	margin-right: 116px;
+	margin-left: 1030px;
+	WIDTH: max-content;
+	border-radius: 1em;
+	/* color: white; */
+}
+
+.home-login-msg {
+	margin-top: -130px;
+	margin-left: 955px;
+	text-align: center;
+}
+
+.home-cards {
+	margin-top: 79px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.home-msg {
+	text-align: center;
+	text-decoration: underline;
+	color: #14578A;
+	font-size: 1.2rem;
+	line-height: 2.2;
+}
+
+.emoji-large {
+	font-size: 1.3rem; /* Adjust the size as needed */
+}
+
+.ftr {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.login-head {
+	margin-bottom: -15px;
+}
+
+.or-divider {
+	font-size: 2rem;
+	text-align: center;
+	position: relative;
+	margin: 40px 0;
+	text-shadow: aqua;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.message-card {
+	max-width: 900px;
+	margin: 50px auto;
+	margin-top: 5%;
+	text-align: center;
+	padding: 30px;
+	border: 2px solid #f0ad4e;
+	border-radius: 8px;
+	background-color: #fff3cd;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.message-card h2 {
+	color: #856404;
+}
+
+.message-card p {
+	font-size: 1.1rem;
+	color: #6c757d;
+}
+
+.btn-primary {
+	background-color: #007bff;
+	border: none;
+}
+
+.btn-primary:hover {
+	background-color: #0056b3;
+}
+
+.welcome-card {
+	max-width: 500px;
+	border: 2px solid #007bff;
+	border-radius: 10px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+	margin-top: 12%;
+	margin-left: 50%;
+	position: relative;
+	transform: translate(-50%, -50%);
+	margin-bottom: -8%;
+}
+
+.card-header-create-account {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: #fff;
+	background: linear-gradient(90deg, #007bff, #0056b3);
+	padding: 15px;
+	text-align: center;
+	border-bottom: none;
+}
+
+/* .card-text {
+	text-align: center;
+} */
+
+.card-footer {
+	font-size: 0.9rem;
+	color: #6c757d;
+}
+
+.not-found {
+	text-align: center;
+}
+
+.scrolling-container {
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    color: blue;
+}
+
+.marquee-text {
+    display: inline-block;
+    animation: moveRightToLeft 18s linear infinite;
+}
+
+@keyframes moveRightToLeft {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	padding: 40px 0 0;
+	box-shadow: 0 2px 5px 0 rgb(0 0 0/ 5%), 0 2px 10px 0 rgb(0 0 0/ 5%);
+	width: 240px;
+	z-index: 600;
+	background-color: #fff;
+}
+
+@media ( max-width : 991.98px) {
+	.sidebar {
+		width: 100%;
+	}
+}
+
+.sidebar .active {
+	border-radius: 5px;
+	box-shadow: 0 2px 5px 0 rgb(0 0 0/ 16%), 0 2px 10px 0 rgb(0 0 0/ 12%);
+}
+
+.sidebar-sticky {
+	position: relative;
+	top: 0;
+	height: calc(100vh - 48px);
+	padding-top: 0.5rem;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.main {
+	padding-left: 240px;
+	margin-top: 90px;
+}
+
+@media ( max-width : 991.98px) {
+	main {
+		padding-left: 0;
+	}
+}
+.nav-shadow{
+	box-shadow: 0 2px 5px 0 rgb(0 0 0/ 5%), 0 2px 10px 0 rgb(0 0 0/ 5%);
+}
+.card-custom {
+	height: 200px; 
+	color: white;
+	padding: 15px; 
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-customer {
+	background: linear-gradient(135deg, #ff7eb3, #ff758c);
+}
+
+.card-account {
+	background: linear-gradient(135deg, #84fab0, #8fd3f4);
+}
+
+.table-container {
+	background-color: #f8f9fa;
+	border-radius: 15px;
+	padding: 20px;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.table th, .table td {
+	vertical-align: middle;
+}
+
+.card-custom h3 {
+	font-size: 1.5rem;
+}
+
+.card-custom p {
+	font-size: 0.9rem;
+}
+
+.table th, .table td {
+	font-size: 0.9rem;
+}
+

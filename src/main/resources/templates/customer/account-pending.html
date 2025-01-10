@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user-base :: layout(content=~{::section}, pageTitle='Account Pending')}">
+<head>
+<meta charset="UTF-8">
+<!-- favi-icon -->
+<link rel="icon" type="image/png" href="/img/fevi-logo-color.png">
+<title>Bank of Magic :: Account Pending</title>
+</head>
+<body>
+
+	<section>
+
+		<div class="message-card">
+			<h2>Account Approval Pending</h2>
+			<p>
+				Dear <span th:text="${customer.firstName + ' ' + customer.lastName}"></span>,
+				your account is still under review. We are currently processing your
+				account request. You will receive an email once your account is
+				approved.
+			</p>
+			<p>In the meantime, if you have any questions, please contact our
+				support team.</p>
+			<a href="/custom_login" class="btn btn-primary">Go Back to Login</a>
+		</div>
+
+	</section>
+
+</body>
+</html>

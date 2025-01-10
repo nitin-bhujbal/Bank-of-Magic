@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{admin-base :: layout(content=~{::section}, pageTitle='Dashboard')}">
+<head>
+<meta charset="UTF-8">
+<!-- favi-icon -->
+<link rel="icon" type="image/png" href="/img/fevi-logo-color.png">
+<title>Bank of Magic :: Dashboard</title>
+</head>
+<body>
+
+	<section class="main container">
+
+		<div th:if="${successMessage != null}"
+			class="alert alert-success alert-dismissible fade show text-center"
+			role="alert">
+			<span th:text="${successMessage}"></span>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+		<div th:if="${errorMessage != null}"
+			class="alert alert-danger alert-dismissible fade show text-center"
+			role="alert">
+			<span th:text="${errorMessage}"></span>
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+
+		<!-- Cards Section -->
+		<div class="row mb-4">
+			<!-- Customer Details Card -->
+			<div class="col-md-4 d-flex align-items-stretch">
+				<div class="card text-center w-100">
+					<div class="card-header bg-primary text-white">Customer
+						Details</div>
+					<div class="card-body">
+						<h5 class="card-title">Total Customers</h5>
+						<p class="display-6 fw-bold" th:text="${totalCustomersWithRole1}"></p>
+						<p>
+							Active: <span class="text-success fw-bold"
+								th:text="${activeCustomers}"></span> &nbsp;|&nbsp; Deactivated:
+							<span class="text-danger fw-bold"
+								th:text="${deactivatedCustomers}"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Branch Details Card -->
+			<div class="col-md-4 d-flex align-items-stretch">
+				<div class="card text-center w-100">
+					<div class="card-header bg-success text-white">Branch Details</div>
+					<div class="card-body">
+						<h5 class="card-title">Total Branches</h5>
+						<p class="display-6 fw-bold" th:text="${totalBranches}"></p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Bank Money Card -->
+			<div class="col-md-4 d-flex align-items-stretch">
+				<div class="card text-center w-100">
+					<div class="card-header bg-warning text-white">Bank Balance</div>
+					<div class="card-body">
+						<h5 class="card-title">Total Money Collected</h5>
+						<p class="display-6 fw-bold">
+							₹ <span th:text="${totalMoneyCollected}"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- New Account Requests Table -->
+		<div class="card mt-4">
+			<div class="card-header bg-secondary text-white">New Account
+				Opening Requests</div>
+			<div class="card-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Customer Name</th>
+							<th>Requested Branch</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="customer : ${pendingCustomers}">
+							<td><span class="text-primary" style="cursor: pointer;"
+								data-bs-toggle="modal" data-bs-target="#customerDetailsModal"
+								th:text="${customer.firstName + ' ' + customer.lastName}"></span></td>
+							<td th:text="${customer.account.branchName}"></td>
+							<td>
+								<form th:action="@{/admin/approve}" method="post"
+									class="d-inline">
+									<input type="hidden" name="customerId"
+										th:value="${customer.id}" />
+									<button type="submit" class="btn btn-outline-success btn-sm">Approve</button>
+								</form>
+								<form th:action="@{/admin/reject}" method="post"
+									class="d-inline">
+									<input type="hidden" name="customerId"
+										th:value="${customer.id}" />
+									<button type="submit" class="btn btn-outline-danger btn-sm">Reject</button>
+								</form>
+							</td>
+						</tr>
+
+						<!-- Show message if no pending customers -->
+						<tr th:if="${pendingCustomers.size() == 0}">
+							<td colspan="3" class="text-center">No pending account
+								requests</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!-- Approve Confirmation Modal -->
+		<div class="modal fade" id="approveModal" tabindex="-1"
+			aria-labelledby="approveModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="approveModalLabel">Confirm
+							Approval</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">Are you sure you want to approve this
+						account request?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-secondary btn-sm"
+							data-bs-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-outline-success btn-sm">Confirm</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Reject Confirmation Modal -->
+		<div class="modal fade" id="rejectModal" tabindex="-1"
+			aria-labelledby="rejectModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="rejectModalLabel">Confirm
+							Rejection</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">Are you sure you want to reject this
+						account request?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-secondary btn-sm"
+							data-bs-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-outline-danger btn-sm">Confirm</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</body>
+</html>
